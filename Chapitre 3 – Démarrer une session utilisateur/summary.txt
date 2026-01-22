@@ -1,0 +1,81 @@
+📌 Summary: PHP Sessions with HTML Forms
+🎯 Objective
+
+The objective is to understand how PHP sessions work, how to start a session, and how to store user information from an HTML form to keep data available across multiple pages.
+
+1️⃣ What is a PHP Session?
+
+A PHP session allows the server to store user data temporarily and reuse it on different pages.
+It helps identify the same user while navigating the website.
+
+2️⃣ Starting a Session
+
+To use sessions, the session must be started at the very top of the PHP file:
+
+session_start();
+
+
+✔ Must be called before any HTML or output.
+
+3️⃣ Using the $_SESSION Superglobal
+
+$_SESSION is an array used to store and access session data.
+
+Storing session data:
+$_SESSION['username'] = $_POST['username'];
+
+Reading session data:
+echo $_SESSION['username'];
+
+4️⃣ Session with HTML Form
+
+User data is collected using an HTML form and saved into a session after basic validation.
+
+<form method="POST">
+  <input type="text" name="username">
+  <button type="submit" name="submit">Login</button>
+</form>
+
+if (isset($_POST['submit']) && !empty($_POST['username'])) {
+  $_SESSION['username'] = $_POST['username'];
+}
+
+5️⃣ Keeping Data Between Pages
+
+Once stored, session data can be accessed on any page as long as the session is active.
+
+session_start();
+echo "Welcome " . $_SESSION['username'];
+
+6️⃣ Destroying a Session (Logout)
+
+To end a session and remove user data:
+
+session_start();
+session_unset();
+session_destroy();
+
+
+✔ Commonly used for logout functionality.
+
+7️⃣ Best Practices for Session Management
+
+Always call session_start() before output
+
+Do not store sensitive data like passwords
+
+Use sessions for authentication and user state
+
+Destroy the session on logout
+
+Check if session variables exist before using them
+
+🧠 Conclusion
+Concept	              Description
+Session	              Stores user data across pages
+session_start()	      Starts the session
+$_SESSION	          Stores session variables
+Form	              Collects user input
+Validation	          Checks empty fields
+session_unset()	      Clears session variables
+session_destroy()	  Ends the session
