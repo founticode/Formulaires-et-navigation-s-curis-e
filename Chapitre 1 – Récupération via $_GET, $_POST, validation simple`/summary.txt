@@ -1,0 +1,123 @@
+📌 Summary: Handling HTML Forms in PHP (GET & POST)
+🎯 Objective
+
+The goal is to understand how to retrieve data sent from an HTML form using PHP superglobals $_GET and $_POST, and apply basic validation to secure user inputs.
+
+1️⃣ HTML Form Basics
+
+An HTML form is used to collect data from the user and send it to a PHP file.
+
+Example:
+<form method="POST" action="process.php">
+  <input type="text" name="username">
+  <input type="email" name="email">
+  <button type="submit" name="submit">Send</button>
+</form>
+
+
+📌 Important points:
+
+The method can be GET or POST
+
+Each input must have a name attribute
+
+2️⃣ GET vs POST Methods
+🔹 GET Method
+
+Data is visible in the URL
+
+Used for search or filters
+
+Less secure
+
+Example URL:
+
+process.php?username=Ali&email=ali@gmail.com
+
+
+Access data in PHP:
+
+$_GET['username'];
+
+🔹 POST Method
+
+Data is hidden (sent in request body)
+
+More secure
+
+Used for login, registration, forms
+
+Access data in PHP:
+
+$_POST['username'];
+
+3️⃣ PHP Superglobals ($_GET and $_POST)
+
+PHP provides superglobal arrays to access form data:
+
+$_GET → for GET method
+
+$_POST → for POST method
+
+Example:
+
+$username = $_POST['username'];
+
+4️⃣ Checking Form Submission with isset()
+
+Before using form data, we must check if the form was submitted.
+
+if (isset($_POST['submit'])) {
+  echo "Form submitted";
+}
+
+
+✔ isset() checks if a variable exists.
+
+5️⃣ Checking Empty Fields with empty()
+
+To ensure the user does not submit empty fields:
+
+if (empty($_POST['username'])) {
+  echo "Username is empty";
+}
+
+
+✔ empty() checks if the value is empty or null.
+
+6️⃣ Basic Validation with filter_var()
+
+To validate an email address:
+
+$email = $_POST['email'];
+
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+  echo "Invalid email address";
+}
+
+
+✔ Ensures the email format is correct.
+
+7️⃣ Complete Simple Example
+if (isset($_POST['submit'])) {
+
+  if (empty($_POST['username'])) {
+    echo "Username is required";
+  } else {
+    echo "Username: " . $_POST['username'];
+  }
+
+  if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+    echo "Invalid email";
+  }
+}
+
+🧠 Conclusion
+Concept	             Description
+GET	                 Sends data through the URL
+POST	             Sends data securely
+$_GET	             Retrieves GET data
+$_POST	             Retrieves POST data
+isset()	             Checks if form is submitted
+empty()	             Checks empty inputs
+filter_var()	     Validates user input
