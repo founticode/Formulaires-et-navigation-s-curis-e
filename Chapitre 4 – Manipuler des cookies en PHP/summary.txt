@@ -1,0 +1,115 @@
+📌 Summary: PHP Cookies and Form Handling
+🎯 Objective
+
+The objective is to understand how to create, read, and delete cookies in PHP in order to temporarily store information on the client side and personalize the user experience.
+
+1️⃣ What is a Cookie?
+
+A cookie is a small piece of data stored in the user’s browser.
+It is sent back to the server with each request and is mainly used to remember user preferences.
+
+Examples of stored data:
+
+Username
+
+Language
+
+Theme (dark/light)
+
+2️⃣ Creating a Cookie with setcookie()
+
+Cookies are created using the setcookie() function.
+
+setcookie("username", "Ali", time() + 3600, "/");
+
+
+Explanation:
+
+"username" → cookie name
+
+"Ali" → cookie value
+
+time() + 3600 → expiration time (1 hour)
+
+"/" → cookie path (available on the entire website)
+
+⚠️ setcookie() must be called before any HTML output.
+
+3️⃣ The Role of the Path /
+
+The path defines where the cookie is accessible.
+
+/ → cookie available on the entire website
+
+/folder/ → cookie available only inside that folder
+
+No path → cookie available only in the current directory
+
+Best practice: use / if the cookie should be global.
+
+4️⃣ Reading a Cookie with $_COOKIE
+
+Cookies are read using the $_COOKIE superglobal.
+
+if (isset($_COOKIE['username'])) {
+  echo $_COOKIE['username'];
+}
+
+
+✔ Always check with isset() before reading a cookie.
+
+5️⃣ Cookies with HTML Forms
+
+User data can be collected from a form and stored in a cookie.
+
+<form method="POST">
+  <input type="text" name="username">
+  <button type="submit" name="submit">Save</button>
+</form>
+
+if (isset($_POST['submit']) && !empty($_POST['username'])) {
+  setcookie("username", $_POST['username'], time() + 3600, "/");
+}
+
+6️⃣ Deleting a Cookie
+
+To delete a cookie, set its expiration time in the past.
+
+setcookie("username", "", time() - 3600, "/");
+
+
+✔ The browser will automatically remove it.
+
+7️⃣ Cookie Expiration
+
+Common expiration examples:
+
+time() + 3600 → 1 hour
+
+time() + 86400 → 1 day
+
+time() + 604800 → 1 week
+
+Shorter lifetimes improve security.
+
+8️⃣ Best Practices for Cookies
+
+Do not store sensitive data (passwords, tokens)
+
+Always set a limited expiration time
+
+Use cookies only for simple data
+
+Always check existence with isset()
+
+Cookies are less secure than sessions
+
+🧠 Conclusion
+Concept	                Description
+Cookie	                Stores data in the browser
+setcookie()	            Creates a cookie
+$_COOKIE	            Reads cookie data
+Path /	                Defines cookie availability
+Expiration	            Controls cookie lifetime
+Deletion	            Removes a cookie
+Best practices	        Improves security and privacy
