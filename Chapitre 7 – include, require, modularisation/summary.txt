@@ -1,0 +1,82 @@
+📌 Summary: Include, Require, and Modular PHP Projects
+🎯 Objective
+
+The objective is to understand how to 
+separate PHP code into multiple 
+files using include and require, 
+making projects modular, readable, and reusable.
+
+1️⃣ include vs require
+Function	Behavior if file missing
+include	Warning, code continues
+require	Fatal error, code stops
+2️⃣ include_once / require_once
+
+include_once → Include file only once
+
+require_once → Require file only once
+
+✔ Prevents multiple definitions or errors from loading the same file twice
+
+3️⃣ Modular Project Structure
+
+Example structure:
+
+/project
+  /includes
+    config.php
+    header.php
+    footer.php
+  index.php
+  about.php
+
+
+config.php → configuration variables
+
+header.php → header HTML
+
+footer.php → footer HTML
+
+index.php → main page
+
+about.php → another page
+
+4️⃣ Example Usage
+require_once "includes/config.php"; // critical file
+include_once "includes/header.php";  // add header
+echo "Main content here";
+include_once "includes/footer.php";  // add footer
+
+
+require_once ensures essential files exist
+
+include_once allows optional files
+
+Code stays organized and reusable
+
+5️⃣ Managing File Paths
+Path	Meaning
+./file.php	same folder
+../file.php	folder above
+includes/file.php	subfolder
+
+✔ Correct paths prevent errors
+
+6️⃣ Advantages of Modularization
+
+Cleaner and organized code
+
+Easy maintenance and updates
+
+Reusable code for multiple pages
+
+Professional and scalable projects
+
+🧠 Conclusion
+Concept	              Description
+include	              Adds a file (warning if missing)
+require	              Adds a file (fatal error if missing)
+include_once	      Adds a file once
+require_once	      Requires a file once
+Modular structure	  Organize project into separate files
+Paths	Correctly     locate files in folders
