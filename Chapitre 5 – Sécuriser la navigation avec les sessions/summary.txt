@@ -1,0 +1,76 @@
+📌 Summary: Null Coalescing Operator (??) in PHP
+🎯 Objective
+
+The objective is to safely retrieve data from HTML forms without generating errors when variables are missing or undefined.
+
+1️⃣ What is the ?? Operator?
+
+The ?? operator is called the Null Coalescing Operator.
+It checks whether a variable exists and is not null.
+
+If it exists → its value is used
+
+If it does not exist or is null → a default value is used
+
+2️⃣ Basic Syntax
+$variable = $_POST['field'] ?? '';
+
+
+This means:
+
+Use $_POST['field'] if it exists
+
+Otherwise, assign an empty string ('')
+
+3️⃣ Example with HTML Form Data
+$nom = $_POST['nom'] ?? '';
+$motdepasse = $_POST['motdepasse'] ?? '';
+
+
+✔ Prevents “Undefined index” errors
+✔ Ensures variables are always defined
+
+4️⃣ Practical Behavior
+When the form is submitted:
+$_POST['nom'] = "Ali";
+
+
+Result:
+
+$nom = "Ali";
+
+When the form is not submitted:
+$_POST['nom'] // not set
+
+
+Result:
+
+$nom = "";
+
+5️⃣ Why Use ???
+
+Avoids PHP notices and warnings
+
+Makes code cleaner and shorter
+
+Improves form data handling
+
+Ideal for $_POST, $_GET, and $_SESSION
+
+6️⃣ Comparison with Older Syntax
+Old way:
+$nom = isset($_POST['nom']) ? $_POST['nom'] : '';
+
+Modern way:
+$nom = $_POST['nom'] ?? '';
+
+
+✔ Same result, simpler code
+
+🧠 Conclusion
+Concept	                 Description
+?? operator	             Returns first non-null value
+Default value	         Used if variable is missing
+$_POST usage	         Safe data retrieval
+Error prevention	     Avoids undefined index
+Best practice	         Clean and readable code
