@@ -1,0 +1,85 @@
+📌 Summary: String Manipulation in PHP
+🎯 Objective
+
+The objective is to learn how to manipulate strings in PHP using built-in functions for modification, searching, splitting, formatting, and cleaning text.
+
+1️⃣ What is a String?
+
+A string is a sequence of characters enclosed in quotes.
+
+$text = "Hello World";
+
+
+PHP supports:
+
+Single quotes ' '
+
+Double quotes " " (variables are parsed)
+
+2️⃣ Common String Functions
+strlen() – String length
+strlen("Hello"); // 5
+
+strtoupper() – Convert to uppercase
+strtoupper("hello"); // HELLO
+
+strtolower() – Convert to lowercase
+strtolower("HELLO"); // hello
+
+ucfirst() – First letter uppercase
+ucfirst("ali"); // Ali
+
+3️⃣ Search and Replace
+strpos() – Search for a word
+strpos("I love PHP", "PHP"); // 7
+
+
+Returns the position or false if not found.
+
+str_replace() – Replace text
+str_replace("PHP", "JavaScript", "I love PHP");
+// I love JavaScript
+
+4️⃣ Cutting and Assembling Strings
+explode() – Split string into array
+explode(",", "HTML,CSS,PHP");
+// ["HTML", "CSS", "PHP"]
+
+implode() – Join array into string
+implode(" - ", ["HTML", "CSS", "PHP"]);
+// HTML - CSS - PHP
+
+5️⃣ Removing Spaces
+trim() – Remove extra spaces
+trim("   Hello World   ");
+// Hello World
+
+
+Removes spaces from the beginning and the end of the string.
+
+6️⃣ Quotes and Concatenation
+Concatenation with .
+$name = "Ali";
+echo "Hello " . $name;
+
+Quotes behavior
+echo 'My name is Ali';
+echo "My name is $name";
+
+
+Double quotes parse variables
+
+Single quotes do not
+
+🧠 Conclusion
+Function	         Description
+strlen()	         Get string length
+strtoupper()	     Convert to uppercase
+strtolower()	     Convert to lowercase
+ucfirst()	         Capitalize first letter
+strpos()	         Find text position
+str_replace()	     Replace text
+explode()	         String to array
+implode()	         Array to string
+trim()	             Remove extra spaces
+.	                 Concatenate strings
