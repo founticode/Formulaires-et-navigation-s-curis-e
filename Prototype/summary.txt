@@ -1,0 +1,50 @@
+📄 Summary: PHP Form Validation with Conditional Messages
+🎯 Educational Objective
+
+The objective of this project is to validate a form using PHP and display feedback messages based on user input, without using a database.
+
+🧩 Step 1: Form Submission (HTML)
+
+An HTML form is created with three fields: Full Name, Email, and Message.
+
+The form uses the POST method to send data securely.
+
+A submit button allows the user to send the form data.
+
+🧩 Step 2: Form Detection (PHP)
+
+PHP checks if the form was submitted using $_SERVER["REQUEST_METHOD"] === "POST".
+
+This ensures that validation is executed only after form submission.
+
+🧩 Step 3: Data Retrieval and Cleaning
+
+User inputs are retrieved from $_POST.
+
+The trim() function is used to remove extra spaces from the beginning and end of inputs.
+
+🧩 Step 4: Validation Logic
+
+PHP checks if any field is empty.
+
+PHP validates the email format using filter_var().
+
+Based on the validation result, a message is prepared (error or success).
+
+🧩 Step 5: Conditional Message Display
+
+The message is displayed only if it exists.
+
+If there is a validation error, an error message is shown.
+
+If all inputs are valid, a success message is shown.
+
+🧠 Final Result
+
+Empty fields → error message.
+
+Invalid email → error message.
+
+Valid inputs → success message.
+
+The project focuses on validation and conditional display, without database interaction.
