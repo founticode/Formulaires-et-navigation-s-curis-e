@@ -1,0 +1,116 @@
+Mini Login App – Summary
+🎯 Objective
+
+The goal of this mini-application is to implement a secure login system using PHP sessions to control access to protected pages.
+
+📌 What We Implemented
+1️⃣ Login Form (HTML + PHP Processing)
+
+Created a login form with:
+
+Username field
+
+Password field
+
+Submit button
+
+Used method="POST" to securely send data.
+
+Checked if the form was submitted using:
+
+$_SERVER["REQUEST_METHOD"] === "POST"
+
+2️⃣ Input Handling and Validation
+
+Retrieved form data using:
+
+$username = trim($_POST['username'] ?? '');
+$password = trim($_POST['password'] ?? '');
+
+
+Used:
+
+trim() to remove extra spaces
+
+empty() to check if fields are empty
+
+?? (null coalescing operator) to avoid errors if the field is not set
+
+Displayed:
+
+Error message if fields are empty
+
+Error message if credentials are incorrect
+
+Redirect if login is successful
+
+3️⃣ Session Management
+
+Started the session using:
+
+session_start();
+
+
+After successful login:
+
+Regenerated session ID using:
+
+session_regenerate_id(true);
+
+
+(Prevents session fixation attacks)
+
+Stored username in session:
+
+$_SESSION['username'] = $username;
+
+4️⃣ Protected Dashboard Page
+
+Verified authentication using:
+
+if (!isset($_SESSION['username']))
+
+
+If not authenticated:
+
+Redirected to login page
+
+If authenticated:
+
+Displayed welcome message
+
+Used htmlspecialchars() to prevent XSS attacks
+
+5️⃣ Logout System
+
+Destroyed session securely using:
+
+session_unset();
+session_destroy();
+
+
+Redirected user back to login page.
+
+🔐 Security Practices Used
+
+POST method instead of GET
+
+Input validation with empty()
+
+Session authentication check
+
+session_regenerate_id() for session security
+
+htmlspecialchars() to prevent XSS
+
+Access control to prevent direct page access
+
+🧠 Final Result
+
+The application allows:
+
+✔ User login
+✔ Session-based authentication
+✔ Secure access control
+✔ Secure logout
+✔ Basic protection against common attacks
